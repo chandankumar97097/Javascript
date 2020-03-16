@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Camera</title>
+	<style>
+		video {
+		    top: 70%;
+		    position: absolute;
+		    left: 78%;
+		    width: 400px;
+		    height: 280px;
+		}
+	</style>
+</head>
+<body>
+	
+	<video autoplay controls></video>
+
+	<script>
+
+		const vid = {
+		  video: true
+		};
+
+		const video = document.querySelector('video');
+
+		navigator.mediaDevices.getUserMedia(vid).then((stream) => {video.srcObject = stream});
+
+	</script>
+	
+</body>
+</html>

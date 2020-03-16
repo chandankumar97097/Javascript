@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat App</title>
+  <style>
+    .main-box {
+      width: 500px;
+      border: 4px solid #e08787;
+      box-shadow: -1px 0px 21px 0px #333;
+      height: 300px;
+      padding: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    input#input {
+      width: 100%;
+      height: 28px;
+      margin: 12px 0px;
+      border: 2px solid #cf8a8a;
+    }
+    div#box {
+      border: 2px solid #e08786;
+      height: 200px;
+      padding: 3px;
+      width: 100%;
+      overflow-y: scroll;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main-box">
+    Enter Chat and press enter
+      <input id=input placeholder="&nbsp Start Chat!" />
+    Chat Output
+    <div id=box></div>
+  </div>
+    <script src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
+    <script>
+      (function(){
+          var pubnub = new PubNub({ publishKey : 'demo', subscribeKey : 'demo' });
+          function $(id) { return document.getElementById(id); }
+          var box = $('box'), input = $('input'), channel = '10chat-demo';
+          pubnub.addListener({
+              message: function(obj) {
+                  box.innerHTML = (''+obj.message).replace( /[<>]/g, '' ) + '<br><br>' + box.innerHTML
+              }});
+          pubnub.subscribe({channels:[channel]});
+          input.addEventListener('keyup', function(e) {
+              if ((e.keyCode || e.charCode) === 13) {
+                pubnub.publish({channel : channel,message : input.value,x : (input.value='')});
+            }
+          });
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validation Forms</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<style>
+		.mt-100{
+			margin-top: 100px;
+		}
+		
+		input[type="button"] {
+		    background: white;
+		    border: 2px solid #000000;
+		    padding: 8px 34px;
+		    color: #000;
+		    margin-top: 20px;
+		    font-size: 15px;
+		    cursor: pointer;
+		}
+		input[type="button"]:hover {
+		    background: red;
+		    border: 2px solid #f83f37;
+		    color: #fff;
+		    transition: .4s ease-in;
+		}
+		input[type="text"] {
+		    width: 100%;
+		    border: 1px solid #000;
+		    padding: 7px 0px;
+		    margin-top: 4px;
+		    margin-bottom: 16px;
+		}
+		legend {
+		    font-size: 24px;
+		}
+		span{
+			color: red;
+		}
+		.phones {
+		    transition: .4s ease-in;
+		}
+		/* Table */
+		table {
+		  width:100%;
+		}
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  padding: 15px;
+		  text-align: left;
+		}
+		table#t01 tr:nth-child(even) {
+		  background-color: #eee;
+		}
+		table#t01 tr:nth-child(odd) {
+		 background-color: #fff;
+		}
+		table#t01 th {
+		  background-color: black;
+		  color: white;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="row">
+		<div class="container mt-100">
+			<div class="col-sm-4">
+				<form name="userdata" id="form">
+					<fieldset>
+					  <legend>User Info:</legend>
+					  	<span id="msg"></span><br />
+					  		Name: 
+					  		<input type="text" name="name" id="name"><br />
+
+						  	Company: 
+						  	<input type="text" name="company" id="company">
+
+					  		Email: 
+					  		<input type="text" name="email" id="email"><br />
+
+							Phone: <input type="text" name="phone" id="phone">
+						  	
+					  		Date of birth: <br />
+					  		<input type="date" name="dob" id="dob"><br />
+							<br /> 
+					  		<input type="button" value="⇒ Submit" id="send" onclick="senddata()">
+					</fieldset>
+				</form>
+			</div>
+			<div class="col-sm-8">
+				<table class="table table-stripped">
+					<tr border="1">
+						<th>UID</th>
+						<th>Name</th>
+						<th>Company</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Date of birth</th>
+					</tr>
+					<tr>
+						<td id="uid"></td>
+						<td id="uname"></td>
+						<td id="ucompany"></td>
+						<td id="uemail"></td>
+						<td id="uphone"></td>
+						<td id="udob"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+		function senddata(){
+
+			var id = Math.floor(Math.random() * 10);
+			var name = document.getElementById('name').value;
+			var company = document.getElementById('company').value;
+			var email = document.getElementById('email').value;
+			var phone = document.getElementById('phone').value;
+			var dob = document.getElementById('dob').value;
+
+			var users = { id, name, company, email, phone, dob};
+
+			// Put the object into the storage
+			localStorage.setItem('users', JSON.stringify(users));
+			localStorage.getItem(users);
+
+			document.getElementById('uid').innerHTML = users.id;
+			document.getElementById('uname').innerHTML = users.name;
+			document.getElementById('ucompany').innerHTML = users.company;
+			document.getElementById('uemail').innerHTML = users.email;
+			document.getElementById('uphone').innerHTML = users.phone;
+			document.getElementById('udob').innerHTML = users.dob;
+
+				if(name == '' && company == '' && email == '' && phone == '' && dob == ''){
+					document.getElementById('msg').innerHTML = 'All Fields are Required!';
+				}
+				setTimeout(function timeOut(){
+					document.getElementById('msg').style.display = "none";
+				}, 2000);
+
+		}
+
+	</script>
+</body>
+</html>

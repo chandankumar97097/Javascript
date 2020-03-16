@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Conditional Forms</title>
+	<style>
+		form {
+			width: 600px;
+			margin: 0 auto;
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		fieldset {
+		    border: 3px solid #2a968c;
+		    box-shadow: 3px 13px 14px -7px #333;
+		    padding: 30px;
+		}
+		input[type="button"] {
+		    background: white;
+		    border: 2px solid #000000;
+		    padding: 8px 34px;
+		    color: #000;
+		    margin-top: 20px;
+		    font-size: 15px;
+		    cursor: pointer;
+		}
+		input[type="button"]:hover {
+		    background: red;
+		    border: 2px solid #f83f37;
+		    color: #fff;
+		    transition: .4s ease-in;
+		}
+		input[type="text"] {
+		    width: 100%;
+		    border: 1px solid #000;
+		    padding: 7px 0px;
+		    margin-top: 4px;
+		    margin-bottom: 16px;
+		}
+		legend {
+		    font-size: 24px;
+		}
+		span {
+			color: red;
+		}
+		.phones {
+		    transition: .4s ease-in;
+		}
+
+	</style>
+</head>
+<body>
+	<form name="userdata" id="form">
+		<fieldset>
+		  <legend>User Info:</legend>
+		  	<span id="msg"></span><br />
+		  		Name: 
+		  		<input type="text" name="name" id="name" onchange="nameCheck(this);"><br />
+
+			  	<div class="phones" id="name_block" style="display: none;">
+			  		Company: 
+			  		<input type="text" name="company" id="company">
+			  	</div>
+
+		  		Email: 
+		  		<input type="text" name="email" id="email" onchange="phoneCheck(this);"><br />
+
+			  	<div class="phones" id="phone_block" style="display: none;">
+			  		Phone: <input type="text" name="phone" id="phone">
+			  	</div>
+
+		  		Date of birth: <br />
+		  		<input type="date" name="dob" id="dob" onchange="dojCheck(this);"><br />
+
+				<br />
+			  	<div class="phones" id="doj_block" style="display: none;">
+			  		Date of Joining: <br /> 
+			  		<input type="date" name="doj" id="doj">
+			  	</div>
+
+		  	<input type="button" value="⇒ Send" id="send" onclick="senddata()">
+		</fieldset>
+	</form>
+
+	<script>
+		
+		function nameCheck(that) {
+		    if (that.value == "") {
+		        document.getElementById("name_block").style.display = "none";
+		    }else{
+		    	document.getElementById("name_block").style.display = "block";
+		    }
+		}
+
+		function phoneCheck(that) {
+		    if (that.value == "") {
+		        document.getElementById("phone_block").style.display = "none";
+		    }else{
+		    	document.getElementById("phone_block").style.display = "block";
+		    }
+		}
+
+		function dojCheck(that) {
+		    if (that.value == "") {
+		        document.getElementById("doj_block").style.display = "none";
+		    }else{
+		    	document.getElementById("doj_block").style.display = "block";
+		    }
+		}
+		
+		function senddata(){
+			var name = document.getElementById('name').value;
+			var company = document.getElementById('company').value;
+			var email = document.getElementById('email').value;
+			var phone = document.getElementById('phone').value;
+			var dob = document.getElementById('dob').value;
+			var doj = document.getElementById('doj').value;
+
+				if(name == '' && email == '' && dob == ''){
+					document.getElementById('msg').innerHTML = 'All Fields are Required!';
+				}
+				setTimeout(function timeOut(){
+					document.getElementById('msg').style.display = "none";
+				}, 2000);
+
+
+				console.table([name, company, email, phone, dob, doj]);
+		}
+
+	</script>
+</body>
+</html>

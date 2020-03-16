@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enable Microphone</title>
+</head>
+<body>
+    <script>
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+            const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.start();
+        });
+    </script>
+</body>
+</html>

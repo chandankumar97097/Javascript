@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#btnPrint").live("click", function () {
+            var divContents = $("#dvContainer").html();
+            var printWindow = window.open('', '', 'height=800,width=1200');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>
+</head>
+<body>
+    <form id="form1">
+    <div id="dvContainer">
+        <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1"><h2><div class="field field--name-field-block-header-title field--type-text field--label-hidden field--item">Find the Right Solutions to Compete and Grow In the Digital Economy</div></h2><div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>Ingram Micro Cloud connects partners with the world’s largest cloud ecosystem, positioning partners to better manage their cloud services and grow revenue. Learn how Ingram Micro Cloud can help you:</p></div></div>
+    </div>
+    <input type="button" value="Print Div Contents" id="btnPrint" />
+    </form>
+</body>
+</html>
