@@ -1,6 +1,6 @@
 ## Most Asked JavaScript Interview Questions.
-### ES5 vs ES6
-### Let Var and Const
+1. ### ES5 vs ES6
+2. ### Let Var and Const
 ### Array Function
 ### Template Literal
 ### Callback Function
