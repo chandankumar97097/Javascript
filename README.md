@@ -46,7 +46,7 @@
 ### 45 Message Queue
 ### 46 Event Bubbling & Capturing
 ### 47 Thinking Recursively
-### 48 Throttling
+### 48 Throttling & Debouncing
 ### 49 CORS
 
 
