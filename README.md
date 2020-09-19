@@ -48,6 +48,20 @@
 ### 47 Thinking Recursively
 ### 48 Throttling & Debouncing
 ### 49 CORS
+### 50 Minification & Obfucation
+### 51 Decorators
+### 52 Mixins
+### 53 History
+### 54 Typed Array & Array Buffer
+### 55 Null V/S Undefined
+### 56 NaN === NaN
+### 57 Swap two numbers without using third variable (let a = 10; let b = 20; [a,b] = [b,a])
+### 58 Math.max() // -infinite
+### 59 console.log(5<6<7); // true
+### 60 console.log(7>6>5); // false
+### 61 console.log(2 + '2'); // 22
+### 62 console.log(2 - '2'); // 0
+### 63 document.body.contentEditable = true;
 
 
 ## Array Methods
