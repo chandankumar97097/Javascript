@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			margin: 0 auto;
+			display: block;
+			border: 10px solid green;
+			border-radius: 50%;
+			height: 400px;
+			width: 400px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: 0.4s ease-in-out;
+		}	
+		.box:hover{
+			border: 10px solid orange;
+		}
+	</style>
+</head>
+<body>
+	<img src="a.jpg" id="myImg" class="box" />  
+
+	<script>
+		var img = document.getElementById('myImg');
+		img.onmouseout = function () {
+		   this.src = 'a.jpg';
+		};
+		img.onmouseover = function () {
+		   this.src = 'b.jpg';
+		};
+	</script>
+</body>
+</html>
